@@ -1,0 +1,69 @@
+#screen{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "top-grass"
+    "top-side"
+    "race-track"
+    "bot-side"
+    "bot-grass";
+    max-width: 800px;
+    width: 100%;
+    height: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: pink;
+}
+#top_grass{grid-area: top-grass;}
+#top_side{grid-area: top-side;}
+#race_track{grid-area: race-track;}
+#bot_side{grid-area: bot-side;}
+#bot_grass{grid-area: bot-grass;}
+
+.grass{
+    height: 130px;
+    background-image: url('../img/track/grass.png');
+}
+
+.side {
+    height: 20px;
+    background-image: url('../img/track/side.png');
+}
+
+.track {
+    height: 400px;
+    background-image: url('../img/track/asphalt.png');
+    position: relative;
+}
+    .track > .line {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 50px;
+        background-image: url('../img/track/line.png');
+    }
+    .track > .start {
+        left: 80px;
+    }
+    .track > .finish {
+        right: 20px;
+    }
+    .track > .car{
+        position: absolute;
+        left: 0;
+        height: 30px;
+        width: 80px;
+        margin: 10px 0px;
+        z-index: 1;
+    }
+    .track > .car1 {top: 0;}
+    .track > .car2 {top: 50px;}
+    .track > .car3 {top: 100px;}
+    .track > .car4 {top: 150px;}
+    .track > .car5 {top: 200px;}
+    .track > .car6 {top: 250px;}
+    .track > .car7 {top: 300px;}
+    .track > .car8 {top: 350px;}
