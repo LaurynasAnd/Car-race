@@ -1,7 +1,6 @@
 'use strict';
 
 import Car from './renderCar.js';
-console.log('Hello');
 const raceCars = [];
 const carNames = ["Lightning",
                     "Thunder",
@@ -21,6 +20,28 @@ for (let i = 0; i < 8; i++) {
 }
 console.log(raceCars);
 for(const car of raceCars) {
-    console.log('trying to render');
     car.render();
 }
+
+const button = document.querySelector('.start-button');
+button.addEventListener('click', ()=>{
+    console.log('click');
+    
+    const interval = setInterval(()=>{
+        for(const car of raceCars){
+            car.drive();
+        }
+
+        let isFinished = false;
+        for(const car of raceCars){
+            if(car.distance >= 650){
+                isFinished = true;
+                clearInterval(interval);
+            }
+        }
+
+    },500)
+        
+    console.log(raceCars);
+});
+
