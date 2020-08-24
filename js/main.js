@@ -10,7 +10,7 @@ const carNames = ["Lightning",
                     "Justice",
                     "Alfa",
                     "Omega"];
-for (let i = 0; i < 8; i++) {
+for (let i = 0; i < carNames.length; i++) {
     const car = new Car({
         name: carNames[i],
         maxSpeed: 250,
@@ -18,15 +18,16 @@ for (let i = 0; i < 8; i++) {
     });
     raceCars.push(car);
 }
-console.log(raceCars);
 for(const car of raceCars) {
     car.render();
 }
 
 const button = document.querySelector('.start-button');
-button.addEventListener('click', ()=>{
-    console.log('click');
-    
+button.addEventListener('click', race);
+
+function race() {
+    const button = document.querySelector('.start-button');
+    button.classList.add('hidden');
     const interval = setInterval(()=>{
         for(const car of raceCars){
             car.drive();
@@ -36,12 +37,24 @@ button.addEventListener('click', ()=>{
         for(const car of raceCars){
             if(car.distance >= 650){
                 isFinished = true;
+                button.innerHTML = 'reset race';
+                button.classList.remove('hidden');
+                button.removeEventListener('click', race);
+                button.addEventListener('click', reset)
                 clearInterval(interval);
             }
         }
 
-    },500)
-        
-    console.log(raceCars);
-});
+    },500);
+}
 
+function reset(){
+    const button = document.querySelector('.start-button');
+    for (const car of raceCars){
+        car.reset();
+    }
+    button.innerHTML = 'start race';
+    button.removeEventListener('click', reset);
+    button.addEventListener('click', race);
+
+}

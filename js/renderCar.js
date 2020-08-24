@@ -14,7 +14,6 @@ class Car{
         DOM.innerHTML += HTML;
     }
     drive(){
-        console.log('driving');
         const random = Math.random();
         if (random < 0.2) {
             this.decelerate(Math.trunc(Math.random()*5+1))
@@ -23,23 +22,22 @@ class Car{
         }
         this.go();
         const DOM = document.querySelector(`.${this.carNo}`);
-        console.log(DOM);
         DOM.style.marginLeft = `${this.distance}px`;
     }
     decelerate(x){
-        console.log('decelerate: ', x);
         this.speed = (this.speed - x > 0) ? this.speed - x : 0;
     }
     accelerate(x){
-        console.log('accelerate: ', x);
         this.speed = (this.speed + x < this.maxSpeed) ? this.speed + x : this.maxSpeed;
     }
     go(){
         this.distance += this.speed;
-        // const DOM = document.querySelector(`.${this.carNo}`);
-        // console.log(DOM);
-        // console.log(this.distance);
-        // DOM.style.marginLeft = `${this.distance}`;
+    }
+    reset(){
+        this.distance = 0;
+        this.speed = 0;
+        const DOM = document.querySelector(`.${this.carNo}`);
+        DOM.style.marginLeft = `${this.distance}px`;
     }
 }
 

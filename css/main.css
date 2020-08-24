@@ -71,6 +71,7 @@
     .track > .car7 {top: 300px;}
     .track > .car8 {top: 350px;}
 
+
 #bot_grass > .start-button {
     width: fit-content;
     background-color: yellow;
@@ -85,6 +86,10 @@
     top: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+    text-transform: uppercase;
+}
+#bot_grass > .start-button.hidden {
+    display: none;
 }
 #bot_grass > .start-button:hover{
     background-color: yellowgreen;
