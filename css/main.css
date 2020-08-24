@@ -62,15 +62,40 @@
         margin-left: 0px;
         transition: all 500ms linear;
     }
+    .track > .car1-name,
     .track > .car1 {top: 0;}
+    .track > .car2-name,
     .track > .car2 {top: 50px;}
+    .track > .car3-name,
     .track > .car3 {top: 100px;}
+    .track > .car4-name,
     .track > .car4 {top: 150px;}
+    .track > .car5-name,
     .track > .car5 {top: 200px;}
+    .track > .car6-name,
     .track > .car6 {top: 250px;}
+    .track > .car7-name,
     .track > .car7 {top: 300px;}
+    .track > .car8-name,
     .track > .car8 {top: 350px;}
 
+    .track > .car-name {
+        display: inline-block;
+        position: absolute;
+        left: 100px;
+        margin: 5px;
+        padding: 5px;
+        font-size: 20px;
+        line-height: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        z-index: 1;
+        text-transform: capitalize;
+        background-color: #fff;
+        border: 2px solid red;
+    }
+    .track > .car-name.hidden {
+        display: none;
+    }
 
 #bot_grass > .start-button {
     width: fit-content;

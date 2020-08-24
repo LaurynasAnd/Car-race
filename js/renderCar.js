@@ -10,7 +10,8 @@ class Car{
     }
     render(){
         const DOM = document.querySelector('.track');
-        const HTML = `<img src="./img/cars/${this.carNo}.png" alt="" class="${this.carNo} car">`;
+        const HTML = `<img src="./img/cars/${this.carNo}.png" alt="" class="${this.carNo} car">
+                        <div class="car-name ${this.carNo}-name">${this.name}</div>`;
         DOM.innerHTML += HTML;
     }
     drive(){
