@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+body * {
+    font-family: 'Kalam', cursive;
+}
 #screen{
     display: grid;
     grid-template-columns: 1fr;
@@ -21,6 +25,56 @@
 #race_track{grid-area: race-track;}
 #bot_side{grid-area: bot-side;}
 #bot_grass{grid-area: bot-grass;}
+.welcome {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 101;
+    border: 20px solid #555;
+
+}
+    .welcome.disappear{
+        animation-name: disappear;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+
+    }
+    .welcome > h1 {
+        display: inline-block;
+        width: 100%;
+        text-align-last: center;
+        text-transform: uppercase;
+        font-size: 80px;
+        margin: 100px 0;
+    }
+    .welcome > p {
+        display: inline-block;
+        width: 100%;
+        padding: 0 20%;
+        text-align: center;
+        box-sizing: border-box;
+        margin-bottom: 100px;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .welcome > .begin-button {
+        display: inline-block;
+        width: 200px;
+        background-color: yellow;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 30px;
+        line-height: 50px;
+        padding-top: 5px;
+        margin-left: calc(50% - 100px);
+        cursor: pointer;
+    }
+        .welcome > .begin-button:hover {
+            background-color: yellowgreen;
+        }
 
 .grass{
     height: 130px;
@@ -62,6 +116,30 @@
         margin-left: 0px;
         transition: all 500ms linear;
     }
+        .track > .car1.engine-on,
+        .track > .car5.engine-on {
+            animation-name: engine-on1;
+            animation-duration: 200ms;
+            animation-iteration-count: infinite;
+        }
+        .track > .car2.engine-on,
+        .track > .car6.engine-on {
+            animation-name: engine-on2;
+            animation-duration: 200ms;
+            animation-iteration-count: infinite;
+        }
+        .track > .car3.engine-on,
+        .track > .car7.engine-on {
+            animation-name: engine-on3;
+            animation-duration: 200ms;
+            animation-iteration-count: infinite;
+        }
+        .track > .car4.engine-on,
+        .track > .car8.engine-on {
+            animation-name: engine-on4;
+            animation-duration: 200ms;
+            animation-iteration-count: infinite;
+        }
     .track > .car1-name,
     .track > .car1 {top: 0;}
     .track > .car2-name,
@@ -87,7 +165,6 @@
         padding: 5px;
         font-size: 20px;
         line-height: 30px;
-        font-family: Arial, Helvetica, sans-serif;
         z-index: 1;
         text-transform: capitalize;
         background-color: #fff;
@@ -100,7 +177,6 @@
 #bot_grass > .start-button {
     width: fit-content;
     background-color: yellow;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
     font-size:20px;
     line-height: 30px;
@@ -118,4 +194,101 @@
 }
 #bot_grass > .start-button:hover{
     background-color: yellowgreen;
+}
+
+#screen > .intro {
+    position: absolute;
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff22;
+    z-index: 100;
+}
+    #screen > .intro > .text {
+        align-self: center;
+        text-transform: uppercase;
+        font-size: 60px;
+        font-weight: 600;
+    }
+    
+        #screen > .intro > .text.fadeout {
+        animation-name: fadeout;
+        animation-duration: 1s;
+        }
+    #screen > .intro > .lights {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        align-self: center;
+        width: 420px;
+        height: 100px;
+        background-color: #555;
+        border-radius: 20px;
+        box-shadow: 0px 0px 20px #000000bf;
+    }
+    #screen > .intro > .lights > .light {
+        width: 50px;
+        height: 50px;
+        background-color: #ff000033;
+        border-radius: 50%;
+    }
+    #screen > .intro > .lights > .light.active{
+        background-color: #ff0000;
+        box-shadow: 0px 0px 20px #ff0000;
+    }
+    #screen > .intro > .lights > .light.green{
+        background-color: #00ff00;
+        box-shadow: 0px 0px 20px #00ff00;
+    }
+    
+
+
+@keyframes disappear {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+@keyframes engine-on1 {
+    0% {transform: translateY(0px);}
+    25% {transform: translateY(1px);}
+    50% {transform: translateY(0px);}
+    75% {transform: translateY(-1px);}
+    100% {transform: translateY(0px);}
+}
+@keyframes engine-on2 {
+    0% {transform: translateY(0px);}
+    20% {transform: translateY(1px);}
+    30% {transform: translateY(0px);}
+    55% {transform: translateY(-1px);}
+    60% {transform: translateY(-1.5px);}
+    80% {transform: translateY(-0.75px);}
+    100% {transform: translateY(0px);}
+}
+@keyframes engine-on3 {
+    0% {transform: translateY(0px);}
+    20% {transform: translateY(-0.5px);}
+    35% {transform: translateY(-2px);}
+    50% {transform: translateY(-1px);}
+    69% {transform: translateY(0px);}
+    79% {transform: translateY(1px);}
+    90% {transform: translateY(2px);}
+    100% {transform: translateY(0px);}
+}
+@keyframes engine-on4 {
+    0% {transform: translateY(0px);}
+    25% {transform: translateY(1px);}
+    35% {transform: translateY(1.5px);}
+    50% {transform: translateY(0px);}
+    67% {transform: translateY(-1px);}
+    79% {transform: translateY(-2px);}
+    100% {transform: translateY(0px);}
+}
+@keyframes fadeout {
+    0% {transform: scale(1);}
+    100% {transform: scale(3);}
 }
