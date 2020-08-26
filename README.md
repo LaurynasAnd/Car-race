@@ -6,7 +6,7 @@
 # Training website
 
 
-This project is for learning purposes only. Pull requests are welcome, but keep in mind that I did this during my coding training! Thank you for your interest! :)
+This project is for my learning purposes only. I did this game during my coding training! Thank you for your interest! :)
 
 Site published at https://laurynasand.github.io/Car-race/
 
