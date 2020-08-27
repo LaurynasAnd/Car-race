@@ -151,12 +151,12 @@ function race() {
         }
 
         //check if any car finish race
-        const finish = document.querySelector('.finish').offsetX;
-        console.log(finish);
+        //finish holds finish line value
+        const finish = document.querySelector('.finish').offsetLeft;
         
         let isFinished = false;
         for(const car of raceCars){
-            if(car.distance >= 650){
+            if(car.distance >= finish){
                 isFinished = true;
                 clearInterval(interval);
                 //det timeout is used because earier following code was executed too soon

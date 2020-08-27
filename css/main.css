@@ -20,6 +20,7 @@ body * {
     "bot-grass";
     height: 100vh;
     background-color: pink;
+    overflow: hidden;
 }
 #top_grass{grid-area: top-grass;}
 #top_side{grid-area: top-side;}
