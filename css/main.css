@@ -195,12 +195,12 @@ body * {
 #bot_grass > .start-button:hover{
     background-color: yellowgreen;
 }
-
+#screen  .winner,
 #screen > .intro {
     position: absolute;
     display: flex;
-
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     top: 0;
     left: 0;
@@ -218,7 +218,7 @@ body * {
     
         #screen > .intro > .text.fadeout {
         animation-name: fadeout;
-        animation-duration: 1s;
+        animation-duration: 500ms;
         }
     #screen > .intro > .lights {
         display: flex;
@@ -246,7 +246,9 @@ body * {
         background-color: #00ff00;
         box-shadow: 0px 0px 20px #00ff00;
     }
-    
+    #screen  .winner > .text {
+        font-size: 70px;
+    }
 
 
 @keyframes disappear {

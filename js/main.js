@@ -36,7 +36,7 @@ function beginRace(){
     for(const car of raceCars) {
         car.render();
     }
-    //cars are rendered, now carsDOM can b assigned a value
+    //cars are rendered, now carsDOM can be assigned a value
     carsDOM = document.querySelectorAll('.car');
     
     //add event listener for start button
@@ -69,15 +69,15 @@ function intro(){
     setTimeout(() => {
         textDOM.remove();
         intro.innerHTML='<div class="text fadeout">start...</div>'
-    }, 1000);
+    }, 500);
     setTimeout(() => {
         textDOM.remove();
         intro.innerHTML='<div class="text fadeout">your...</div>'
-    }, 2000);
+    }, 1000);
     setTimeout(() => {
         textDOM.remove();
         intro.innerHTML='<div class="text fadeout">engines...</div>'
-    }, 3000);
+    }, 1500);
     //start lights are created
     setTimeout(() => {
         for (const car of carsDOM){
@@ -93,33 +93,33 @@ function intro(){
                             </div>`
         
         
-    }, 4000);
+    }, 2000);
     //start lights start countdown to start
     setTimeout(() => {
         lights = document.querySelectorAll('.light');
         lights[0].classList.add('active');
         lights[1].classList.add('active');
-    }, 5000);
+    }, 3000);
     setTimeout(() => {
         lights[2].classList.add('active');
         lights[3].classList.add('active');
-    }, 6000);
+    }, 3500);
     setTimeout(() => {
         lights[4].classList.add('active');
         lights[5].classList.add('active');
-    }, 7000);
+    }, 4000);
     //all lights become green marking the start of the race
     setTimeout(() => {
         for(const light of lights){
             light.classList.remove('active');
             light.classList.add('green');
         }
-    }, 8000);
+    }, 4500);
     //intro  is removed and race begins
     setTimeout(() => {
         intro.remove();
         race();
-    }, 9000);
+    }, 5000);
 }
 
 
@@ -139,22 +139,37 @@ function race() {
             car.drive();
         }
 
-    
+        //sort racer list
+        for (let i = 0; i < raceCars.length-1; i++) {
+            for (let j = i+1; j < raceCars.length; j++) {
+                if(raceCars[i].distance < raceCars[j].distance){
+                    const temp = raceCars[i];
+                    raceCars[i] = raceCars[j];
+                    raceCars[j] = temp;
+                }
+            }
+        }
+
+        //check if any car finish race
         let isFinished = false;
         for(const car of raceCars){
             if(car.distance >= 650){
                 isFinished = true;
-                button.innerHTML = 'reset race';
-                button.classList.remove('hidden');
-                //now the start button will have new purpose as reset button
-                //so event listener to start race is removed
-                button.removeEventListener('click', intro);
-                //instead reset event listener is created
-                button.addEventListener('click', reset);
                 clearInterval(interval);
-                for (const car of carsDOM){
-                    car.classList.remove('engine-on');
-                }
+                setTimeout(() => {
+                    button.innerHTML = 'reset race';
+                    button.classList.remove('hidden');
+                    //now the start button will have new purpose as reset button
+                    //so event listener to start race is removed
+                    button.removeEventListener('click', intro);
+                    //instead reset event listener is created
+                    button.addEventListener('click', reset);
+                    for (const car of carsDOM){
+                        car.classList.remove('engine-on');
+                    }
+                    printWinner();
+                    
+                }, 350);
             }
         }
 
@@ -167,6 +182,7 @@ function reset(){
     for (const car of raceCars){
         car.reset();
     }
+    removeWinner();
     setTimeout(()=>{
         button.innerHTML = 'start race';
         //reset event is removed, since it is no longer needed
@@ -179,4 +195,15 @@ function reset(){
             name.classList.remove('hidden');
         }
     },300)
+}
+
+//function to print winner
+function printWinner(){
+    const DOM = document.querySelector('.track');
+    DOM.insertAdjacentHTML('beforeend', `<div class="winner"><div class="text">Winner:</div><div class="name text">${raceCars[0].name}</div></div>`)
+}
+
+function removeWinner(){
+    const DOM = document.querySelector('.winner');
+    DOM.remove();
 }
