@@ -151,11 +151,15 @@ function race() {
         }
 
         //check if any car finish race
+        const finish = document.querySelector('.finish').offsetX;
+        console.log(finish);
+        
         let isFinished = false;
         for(const car of raceCars){
             if(car.distance >= 650){
                 isFinished = true;
                 clearInterval(interval);
+                //det timeout is used because earier following code was executed too soon
                 setTimeout(() => {
                     button.innerHTML = 'reset race';
                     button.classList.remove('hidden');
